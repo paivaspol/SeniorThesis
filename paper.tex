@@ -1,0 +1,43 @@
+\documentclass[pdftex,letterpaper,12pt]{article}
+
+\usepackage{amsmath} % for math equations
+\usepackage[labelfont=bf]{caption} % for bold-facing the caption
+\usepackage[inline, shortlabels]{enumitem} % for inline lists
+\usepackage{chngcntr} % for counters
+\usepackage{graphicx} % for figures
+\usepackage{natbib} % for bibliography
+\usepackage[export]{adjustbox} % for aligning left the figures
+\usepackage{url} % for the url
+\usepackage{verbatim} % for multi-line comments
+
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+
+\title{Senior Honors Thesis}
+\author{Vaspol Ruamviboonsuk}
+\date{\today}
+
+\begin{document}
+  
+  %% intro
+  \thispagestyle{empty} % removes the page number
+  \input{title}
+  \thispagestyle{empty} % removes the page number
+  \tableofcontents
+
+  %% Content
+  \pagebreak 
+  \input{intro}
+  \input{related}
+  \input{codes}
+  \input{tapulator}
+  \input{digitaps}
+  \input{data_eval}
+  \input{future}
+  \input{acknowledge}
+
+  %% Bibliography
+  \pagebreak
+  \bibliography{references}
+  \bibliographystyle{abbrv}
+\end{document}
