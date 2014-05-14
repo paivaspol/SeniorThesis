@@ -2,16 +2,16 @@
 \section{DigiTaps Codes}
 \label{sec:codes}
 
-Numbers can be represented in different ways using different numerical representation system such as base-2 or base-10. In the daily use, numbers are represented using the base-10 numeric system. The numbers can also be represented in base-5. The digits 0 through 9 will be represented as 0, 1, 2, 3, 4, 10, 11, 12, 13, 14 respectively. We call these representations as codes. There are two types of codes: fixed-length and variable-length. The length of all the codes represented by fixed-length are the same. For example, if 0 through 9 are represented with fixed-length code in base-5, we can write them as 00, 01, 02, 03, 04, 10, 11, 12, 13, 14 and the length of each code is 2.
+Numbers can be represented in different ways using different numeral representation system such as base-2 or base-10. In our daily use, numbers are represented in base-10 numeric system. If we represent the first 10 digits, 0 through 9, in base-5, the digits  are be represented as 0, 1, 2, 3, 4, 10, 11, 12, 13, 14 respectively. We will call these representations as \textit{codes}. There are two types of codes: fixed-length and variable-length. The length of all the codes represented by fixed-length are the same. For example, if 0 through 9 are represented with fixed-length code in base-5, we can write them as 00, 01, 02, 03, 04, 10, 11, 12, 13, 14 and the length of all the codes is 2.
 \par
-In contrary, variable-length codes can have variable length. For example, if 0 - 9 are represented with fixed-length code in base-5, we can write them as 0, 1, 2, 3, 4, 10, 11, 12, 13, 14. The first 5 code have a length of 1 and the rest of the codes have a length of 2. We can see that variable-length codes are shorter on average. Since the variable-length codes are potentially shorter than fixed-length codes on average, we decided to use variable-length codes for representing the numbers.
+In contrary, variable-length codes can have variable length. For example, if the digits 0 through 9 are represented with fixed-length code in base-5, we can write them as 0, 1, 2, 3, 4, 10, 11, 12, 13, 14. The first five codes are 1 digit long and the rest of the codes are 2 digits long. We can see that variable-length codes are shorter on average. Since the variable-length codes are potentially shorter than fixed-length codes on average, we decided to use variable-length codes for representing the numbers.
 \par
 Although variable-length codes can represent numbers with a shorter length than fixed-length codes. It introduces an ambiguity issue to the code. For example, suppose we have a program to decode base-5 variable-length codes to base-10 digits. We enter the number 1 into the program. The program cannot justify whether the number 1 suppose to be the code 1 or the first digit of 11. The problem does not arise in fixed-length codes because all the code have the same length. Thus, the digit 1 is represented by 01. To resolve the ambiguity, we use a variant of variable-length code called Prefix-free code. 
 \par
 Prefix-free codes do not allow a code to be a prefix of another code \cite{huf52}. In our example above, if we use prefix-free code to represent 0-9 in base-5, there cannot be 10, 11, 12, 13, 14 because 1 is already a code by itself and it cannot be a prefix of another code. Since using prefix-free code removes the ambiguity among the codes and it is a variable-length code, we decided to use prefix-free code to represent our codes in DigiTaps.
 
 \subsection{Espresso}
-We develop a learnable prefix-free code called Espresso. With Espresso, the digits can be derived by adding the numbers 0, 1, 2, and 3. For example, 0 is represented by one finger swipe, 1 by a one-finger tap, and 2 by a two-finger tap. 3 is represented by three-finger tap and a swipe (3+0). Similarly, 4 is represented by three-finger tap and a one-finger tap (3+1). 6 is represented with two two-finger taps and one-finger swipe (3+3+0). The final swipe is required to ensure that the code is prefix-free. Finally, 9 is represented by three three-finger taps (3+3+3). A swipe is not necessary for 9 because three three-finger taps is not a prefix to another input.
+We develop an easy to learn prefix-free code called Espresso. With Espresso, the digits can be derived by adding the numbers 0, 1, 2, and 3. For example, 0 is represented by one finger swipe, 1 by a one-finger tap, and 2 by a two-finger tap. 3 is represented by three-finger tap and a swipe $(3+0)$. Similarly, 4 is represented by three-finger tap and a one-finger tap $(3+1)$. 6 is represented with two two-finger taps and one-finger swipe $(3+3+0)$. The final swipe is required to ensure that the code is prefix-free. Finally, 9 is represented by three three-finger taps $(3+3+3)$. A swipe is not necessary for 9 because three three-finger taps is not a prefix to another input. See table \ref{espresso} for all gestures.
 \par
 The numbers 0 through 2 in Espresso are 1 gesture long. The next 3 digits, 3 through 5, are 2 gestures long and the rest of the numbers are 3 gestures long. This gives us an average gesture per digit of 2.1.
   \begin{align*}
@@ -37,11 +37,11 @@ The numbers 0 through 2 in Espresso are 1 gesture long. The next 3 digits, 3 thr
   9 & 3-finger tap + 3-finger tap + 3-finger tap \\ [1ex]
   \hline
   \end{tabular}
-  \label{table:nonlin}
+  \label{espresso}
 \end{table}
 
-\subsection{Cappuccinno}
-We develop an optimal prefix-free code that has a lower gestures per digit on average called Cappuccino. In Cappucinno, one-finger swipe represents either 0 or 10. A two-gesture digit is derived by subtraction, with the one-finger swipe representing 10. For example, 9 is represented by a swipe followed by a one-finger tap (10 - 1). Similarly, 8 is represented by a swipe and a two-finger tap (10 - 2) and 7 is represented by a swipe and a three-finger tap. In all other cases, one-finger swipe represents 0. For instance, the digit 3 is represented by three-finger tap and a swipe (3 + 0). However, the digit 0 is represent by two one-finger swipes. The second one-finger swipe is added to make the code-prefix free. Furthermore, 6 is represented by two three-finger taps. Espresso and Cappuccino have the same code for the digits 1 through 5. 
+\subsection{Cappuccino}
+We develop an optimal prefix-free code that has a lower gestures per digit on average called Cappuccino. In Cappuccino, one-finger swipe represents either 0 or 10. A two-gesture digit is derived by subtraction, with the one-finger swipe representing 10. For example, 9 is represented by a swipe followed by a one-finger tap $(10 - 1)$. Similarly, 8 is represented by a swipe and a two-finger tap $(10 - 2)$ and 7 is represented by a swipe and a three-finger tap. In all other cases, one-finger swipe represents 0. For instance, the digit 3 is represented by three-finger tap and a swipe $(3 + 0)$. However, the digit 0 is represent by two one-finger swipes. The second one-finger swipe is added to make the code-prefix free. Furthermore, 6 is represented by two three-finger taps. Espresso and Cappuccino have the same code for the digits 1 through 5. See table \ref{cappuccino} for all gestures.
 \par
 The numbers 1 and 2 in Espresso are 1 gesture long. The next 3 digits, 3 through 6, are 2 gestures long and the rest of the numbers are also 2 gestures long. This gives us an average gesture per digit of 1.8.
   \begin{align*}
@@ -67,7 +67,7 @@ The numbers 1 and 2 in Espresso are 1 gesture long. The next 3 digits, 3 through
   9 & 1-finger swipe + 1-finger tap \\ [1ex]
   \hline
   \end{tabular}
-  \label{table:nonlin}
+  \label{cappuccino}
 \end{table}
 
 \subsection{Analysis of Prefix-free Codes}
@@ -75,4 +75,4 @@ Espresso uses 2.1 gestures on average per digit. This is close to fixed-length b
   \begin{align*}
     {4 \choose 2} \times 10! &= 21,772,800
   \end{align*}
-There are 6 ways to choose two one-gesture codes from the 4 gestures, and there are 10! possible combinations for assiging the 10 digits to the 10 resulting codes.
+There are 6 ways to choose two one-gesture codes from the 4 gestures, and there are 10! possible combinations for assigning the 10 digits to the 10 resulting codes. Some might even uses less gestures on average than Espresso and Cappuccino. However, are those codes as intuitive and easy to learn as Espresso and Cappuccino?
