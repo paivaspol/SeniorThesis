@@ -1,23 +1,23 @@
 % !TEX root =  paper.tex
 \section{Conclusion and Future Work}
 \label{sec:future}
-We introduced DigiTaps code, a prefix-free code that uses minimal voice feedback. DigiTaps requires at most 2.1 taps per digit and uses only simple gestures in its codes such as swipe and tap. DigiTaps shows promising results in the preliminary evaluation with the entry rate of 1.99 seconds per digit ($SD = 1.25$) using the Espresso method whereas using VoiceOver achieves only 2.77 seconds per digit ($SD = 1.24$).
+We introduced DigiTaps code, a prefix-free code that uses minimal voice feedback. The DigiTaps codes require at most 2.1 taps per digit on average and uses only primitive gestures in its codes such as swipe and tap. In prior work, DigiTaps shows promising results in the preliminary evaluation with the entry rate of 1.99 seconds per digit on average ($SD = 1.25$) using the Espresso method whereas using VoiceOver achieves only 2.77 seconds per digit on average ($SD = 1.24$) \cite{Ruamviboonsuk:2012}. A lab study also showed that the participants can enter the numbers fast and accurate using the DigiTaps codes.  
+\par
+To evaluate the DigiTaps gestures in a real-world context, we developed DigiTaps game as a platform for conducting user study in the wild. DigiTaps is a number entry game. It gives a number to the player and the player uses one of the DigiTaps gestures to enter the number. DigiTaps is distributed through the Apple App Store. We collected information on how the gestures were performed and other metadata such as the number given to the player in the game. At the time of writing this paper, there are 654 players registered and 129,906 events collected. Using a subset of the data collected through the DigiTaps game, we did a preliminary evaluation of the two gestures.
+\par
+% TODO: 
+In terms of accuracy, the players achieved a high accuracy rate, they entered the numbers more than 80\% correctly on average with both DigiTaps codes and each player achieved similar number entering speed. Furthermore, there is no clear evidence on whether which of the code is better. Some players can enter numbers faster using the Cappuccino method while some players can enter numbers faster using the Espresso method. Even though we cannot justify which of the method is better, both DigiTaps codes are still great alternatives for an eyes-free number entering method.
 
-We then developed DigiTaps game as a platform for conducting user study in the large for the DigiTaps gestures. DigiTaps is a simple number entry game. It gives a number to the player and the player uses one of the DigiTaps gestures to enter the number. DigiTaps is distributed through the Apple App Store. We collected information on how the gestures were performed and other metadata such as the number given to the player in the game. At the time of writing this paper, there are 654 installations and 129,906 events and some preliminary evaluation has been done on the data.
-
+\par
 Even though DigiTaps code and the DigiTaps game has been developed and studied to some extent, there are several aspects of the project that can be improved.
 \begin{enumerate}
-  \item \textbf{Advertise and recruit recurring players:}
+  \item \textbf{Get recurring player:}
   \par
-   As presented in the preliminary data analysis section, the data we gathered is still too little to do any in-depth evaluation on the gestures. We need to recruit more players and keep them playing the game.
+   Even though some results were presented, the number of participants is still low. If we can recruit more players to play the DigiTaps game on a regular basis, we can gather more data and get more useful data from the players. Making the game more engaging is one of the possible ways to get players to play the game more frequently. In addition, modifying the tutorial screens to be more interactive will also help new players to get started with the gestures and the game better.
 
   \item \textbf{Implement DigiTaps codes in a real-world application:}
   \par
   DigiTaps code shows potential to be fast and works well in noisy settings. We can incorporate DigiTaps code to any number entering application such as a calculator, personal identification number (PIN) entry and making phone calls.
-
-  \item \textbf{Clean up DigiTaps framework and open source it:}
-  \par
-  DigiTaps was designed to be a platform to do user study in the large from the beginning. Users can use implement their own game and replace the DigiTaps game engine with the implemented game engine. In addition, users can define their own gestures to be detected in DigiTaps. However, at the current state, the framework still needs some cleaning up to make the framework easy to use as much as possible.
 \end{enumerate}
 
 
